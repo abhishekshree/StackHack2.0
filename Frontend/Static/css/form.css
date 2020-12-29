@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+.form-head{
+    font-family: 'Bree Serif', serif;
+    opacity: 0.6;
+    /*margin-bottom: 10%;*/
+}
+
+.btn,.btn-large
+{
+    font-family: 'Bree Serif', serif;
+}
