@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../Static/css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="../Static/css/form.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>User Form</title>
+</head>
+
+<body class="container">
+<!-- contents: name, organisation name, employee id num, mobile num, email, id card, 'food id?',save registration id-->
+<div class="section no-pad-bot" id="index-banner form">
+    <div class="container row">
+        <h2 class="form-head header center-align">Register</h2>
+    </div>
+</div>
+<div class="row ">
+    <form class="col l8 offset-l2 s10 offset-s1" id="myForm" onsubmit="myfunc()">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email" data-error="wrong" data-success="right">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" type="email" class="validate">
+                <label for="email" data-error="wrong" data-success="right">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="password1" type="text" class="validate">
+                <label for="first_name">Password</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="password2" type="text" class="validate">
+                <label for="last_name">Confirm Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="org_name" type="text" class="validate">
+                <label for="org_name">Organisation Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="emp_id" type="text" class="validate">
+                <label for="emp_id">Employee Id</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="mob_no" type="text" class="validate">
+                <label for="mob_no">Mobile Number</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="file-field input-field">
+                <div class="btn grey darken-1 waves-effect waves-light">
+                    <span>File</span>
+                    <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input id="file" class="file-path validate" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="row grey darken-1 waves-effect waves-light right">
+            <input type="submit" class="btn-large center" onclick="location.href='./preview.html';">
+        </div>
+    </form>
+</div>
+
+<!--<script src="../Static/js/userform.js"></script>-->
+
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="../Static/js/materialize.min.js"></script>
+</body>
+</html>

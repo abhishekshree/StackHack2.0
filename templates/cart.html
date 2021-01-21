@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <style>
+        .total {
+            font-size: 1.1em;
+            margin-top: 1em;
+        }
+
+    </style>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Your Meal</title>
+
+    <script>
+        var user = "{{request.user}}"
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+    </script>
+</head>
+
+<body>
+<nav class="light-blue lighten-1 nav" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'menu' %}" class="brand-logo">Orders</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{% url 'menu' %}">Home</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+            <li><a href="{% url 'menu' %}">Home</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<br>
+<div class="container header" style="font-size: 3em;">
+    Your orders are:
+</div>
+
+<div class="container">
+    <div class="section">
+        <table class="highlight">
+            <tr>
+                <th>Sr. No.</th>
+                <th>Item name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th></th>
+            </tr>
+            {% for meal_item in meal_items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ meal_item.food_item.name }}</td>
+                <td>&#8377 {{ meal_item.food_item.price }}</td>
+                <td>{{ meal_item.quantity }}</td>
+                <td>{{ meal_item.get_total }}</td>
+                <!-- Added to increase amount of meals to increase -->
+                <td><button data-item="{{ meal_item.food_item.id }}" data-action="add" class="update-cart btn btn-small green">+1</button>
+                    <button data-item="{{ meal_item.food_item.id }}" data-action="remove" class="update-cart btn btn-small red">-1</button></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h3>Total Amount: &#8377 {{ meal.get_cart_total }}</h3>
+    </div>
+</div>
+<div class="container right-align">
+    <button class="btn ">Proceed to Pay</button>
+</div>
+<br>
+<br>
+<footer class="page-footer col-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            <span>&copy; 2020 Team Bits Please</span>
+        </div>
+    </div>
+</footer>
+
+<!--  Scripts-->
+<script src="{% static 'js/cart.js' %}"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static 'js/materialize.min.js' %}"></script>
+
+</body>
+</html>

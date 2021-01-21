@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!--Let browser know website is optimized for mobile-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="icon" href="{% static 'myfavicon.ico' %}" type="image/x-icon" />
+
+    <title>Cup O' Py</title>
+</head>
+
+<body class="welcome">
+<span id="splash-overlay" class="splash"></span>
+<span id="welcome" class="z-depth-4"></span>
+
+<main class="valign-wrapper main">
+    <span class="container grey-text text-lighten-1">
+
+      <p class="flow-text">Welcome to</p>
+      <h1 class="cafe-name grey-text text-lighten-3">Cup O' Py</h1>
+
+      <blockquote class="flow-text">Work, eat, repeat.</blockquote>
+
+      <div class="center-align">
+        {% if not user.is_authenticated %}
+        <a class="btn btn-large blue-grey" style="margin-right: 20px;" href="{% url 'register' %}">Register</a>
+
+        <a class="btn btn-large blue-grey" href="{% url 'login' %}">Login</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+
+        <a class="btn btn-large blue-grey" style="margin-right: 20px;" href="{% url 'menu' %}">Menu</a>
+        <a class="btn btn-large blue-grey"  href="{% url 'logout' %}">Logout</a>
+        {% endif %}
+      </div>
+
+    </span>
+</main>
+
+<footer class="page-footer col-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            <span>&copy; 2020 Team Bits Please</span>
+        </div>
+    </div>
+</footer>
+
+
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>

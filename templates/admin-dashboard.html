@@ -1,0 +1,10 @@
+{% for order in orders %}
+{{ order.customer.registration_id }}<br>
+{{ order.customer.user.first_name }} {{ order.customer.user.last_name }} <br>
+{% for item in order.get_mealitems %}
+{{ item.food_item.name }}
+x{{ item.quantity }}
+<br>
+{% endfor %}
+Time: {{order.get_cart_time }}
+{% endfor %}

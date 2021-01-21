@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <!--Let browser know website is optimized for mobile-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Preview</title>
+</head>
+
+<body class="container">
+<!-- contents: name, organisation name, employee id num, mobile num, email, id card, 'food id?',save registration id-->
+<div class="section no-pad-bot" id="index-banner form">
+    <div class="container row">
+        <h2 class="form-head header center-align">Verify</h2>
+    </div>
+</div>
+<div class="row ">
+    <form class="col l8 offset-l2 s10 offset-s1" id="myForm">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled id="registration-id" type="text" class="validate">
+                <label for="registration-id" data-error="wrong" data-success="right"><strong>Registration ID: </strong> {{ user.customer.registration_id }}</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s6">
+                <input disabled id="first_name" type="text" class="validate">
+                <label for="first_name"><strong>First Name: </strong> {{ user.first_name }}</label>
+            </div>
+            <div class="input-field col s6">
+                <input disabled id="last_name" type="text" class="validate">
+                <label for="last_name"><strong>Last Name: </strong>{{ user.last_name }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled id="email" type="email" class="validate">
+                <label for="email" data-error="wrong" data-success="right"><strong>Email: </strong>{{ user.email }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled id="username" type="text" class="validate">
+                <label for="username" data-error="wrong" data-success="right"><strong>Username: </strong>{{ user.username }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled id="org_name" type="text" class="validate">
+                <label for="org_name"><strong>organisation Name: </strong>{{ user.customer.organisation }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input disabled id="emp_id" type="text" class="validate">
+                <label for="emp_id"><strong>Employee ID: </strong>{{ user.customer.employee_id }}</label>
+            </div>
+            <div class="input-field col s6">
+                <input disabled id="mob_no" type="text" class="validate">
+                <label for="mob_no"><strong>Mobile Number: </strong>{{ user.customer.mobile_number }}</label>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4"><strong>ID Card </strong></span>
+            </div>
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ user.customer.id_card.url }}">
+            </div>
+        </div>
+        <br>
+        <div class="row grey darken-1 waves-effect waves-light right">
+            <a class="waves-effect waves-light btn-large" href="{% url 'index' %}">
+                Proceed
+            </a>
+        </div>
+    </form>
+</div>
+
+<script src="../Static/js/userform.js"></script>
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>
